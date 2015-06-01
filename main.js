@@ -90,10 +90,10 @@
             case 'rect':
                 points = _data[2].split(" ");
                 obj = $s("rect")
-                    .attr("x1", points[0])
-                    .attr("y1", points[1])
-                    .attr("x2", points[2])
-                    .attr("y2", points[3]);
+                    .attr("x", points[0])
+                    .attr("y", points[1])
+                    .attr("width", points[2])
+                    .attr("height", points[3]);
                 break;
             case 'circle':
                 points = _data[2].split(" ");

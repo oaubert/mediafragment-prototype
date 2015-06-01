@@ -50,7 +50,7 @@ by a type-specific list of data points.
 For path (which is the default if no shape type is specified), a SVG
 path definition.
 
-For rect, 4 numbers `x1`, `y1`, `x2`, `y2`
+For rect, 4 numbers `x`, `y`, `width`, `height`
 
 For circle, 3 numbers `cx` (center y), `cy` (center y) and `r` (radius)
 
