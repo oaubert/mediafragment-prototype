@@ -22,3 +22,13 @@ body {
 #v1_overlay_shape {
     stroke: blue;
 }
+
+#v3_overlay_shape {
+    fill: brown;
+    stroke: black;
+}
+
+#v5_overlay_shape {
+    fill: grey;
+    opacity: .5;
+}
