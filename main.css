@@ -1,0 +1,24 @@
+* {
+  font-family: sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 12pt;
+}
+
+.overlay_container {
+    height: 400px;
+}
+.svg_overlay {
+    pointer-events: none;
+}
+.overlay_shape {
+    fill: none;
+    stroke: green;
+}
+
+/* Could be a pseudo-element: #v1::overlay_shape */
+#v1_overlay_shape {
+    stroke: blue;
+}
