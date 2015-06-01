@@ -6,7 +6,7 @@
     <link href="main.css" rel="stylesheet">
   </head>
   <body>
-    <h2>Static shape</h2>
+    <h2>Static square</h2>
     <video id="v1" width="640" height="360" controls>
       <source src="videos/big_buck_bunny.mp4#t=0,50&amp;shape=M0 0L0 50 50 50 50 0z"></source>
     </video>
@@ -16,23 +16,28 @@
       <source src="videos/big_buck_bunny.mp4#t=0,50&amp;shape=circle:50 50 40"></source>
     </video>
 
+    <h2>Static shape</h2>
+    <video id="v2bis" width="640" height="360" controls>
+      <source src="videos/big_buck_bunny.mp4#t=5,24&amp;shape=m 211,56 12,19 16,12 22,-2 10,-18 -5,-21 -16,-10 -24,8 -14,13z">
+    </video>
+
     <h2>Dynamic shape</h2>
     <video id="v3" width="640" height="360" controls>
-      <source src="videos/big_buck_bunny.mp4#t=0,20&amp;shape=M2,23 12,42 28,55 50,52 60,34 55,12 39,2 14,10 0,23Z&amp;trajectory=M9,323C147,8 270,78 270,78"> 
+      <source src="videos/big_buck_bunny.mp4#t=5,22&amp;shape=M2,23 12,42 28,55 50,52 60,34 55,12 39,2 14,10 0,23Z&amp;trajectory=M9,323C147,8 270,78 270,78">
     </video>
 
     <h2>Dynamic shape with trajectory displayed</h2>
     <video id="v4" width="640" height="360" controls>
-      <source src="videos/big_buck_bunny.mp4#t=0,50&amp;shape=M2,23 12,42 28,55 50,52 60,34 55,12 39,2 14,10 0,23Z&amp;trajectory=M9,323C147,8 270,78 270,78&amp;debug=1"> 
+      <source src="videos/big_buck_bunny.mp4#t=0,50&amp;shape=M2,23 12,42 28,55 50,52 60,34 55,12 39,2 14,10 0,23Z&amp;trajectory=M9,323C147,8 270,78 270,78&amp;debug=1">
     </video>
-    
+
 
     <h2>Another static shape</h2>
     <p>Wait (or navigate to) 46 seconds into the video...</p>
     <video id="v5" width="640" height="360" controls>
       <source src="videos/big_buck_bunny.mp4#t=46,52&amp;shape=m244.28667,5.023931 20.51262,55.321917 36.05248,35.430891 0,7.459131 -4.97276,13.67508 0.62159,13.67508 -18.02624,19.26944 -13.05349,31.07973 -4.97275,32.94451 11.1887,32.94451 26.10697,24.86378 29.83654,13.05349 24.86379,-4.97276 30.45813,-16.16146 22.999,-31.70132 6.21594,-19.26943 -10.5671,-39.16046 -14.91827,-27.35016 -10.56711,-13.67508 -2.48638,-19.26943 -10.56711,-12.43189 34.8093,-48.484381 0.62159,-13.053487 6.21595,-37.9172685 -13.67508,0 -13.67508,4.9727566 -23.6206,38.5388639 -4.35116,45.376403 -21.13421,0 L 297.12221,42.9412 268.52886,13.10466 Z"></source>
     </video>
-    
+
     <script src="jquery.min.js"></script>
     <script src="main.js"></script>
   </body>

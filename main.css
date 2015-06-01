@@ -27,7 +27,7 @@ body {
     stroke-width: 4px;
 }
 
-#v3_overlay_shape {
+#v3_overlay_shape, #v2bis_overlay_shape {
     fill: brown;
     stroke: black;
 }
