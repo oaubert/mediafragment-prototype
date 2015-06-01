@@ -5,7 +5,7 @@
     function $s(elem) {
         return $(document.createElementNS('http://www.w3.org/2000/svg', elem));
     }
-    
+
     (function init() {
         $('video').each( function () {
             if (this.readyState !== 4) {
@@ -47,7 +47,7 @@
                 top: "0px",
                 left: "0px"
             });
-            
+
             var width = $(this).width();
             var height = $(this).height();
             var svg = $s("svg")
@@ -115,7 +115,7 @@
             obj.attr("id", video.id + "_overlay_shape")
                 .attr("class", "overlay_shape");
             g.append(obj);
-            
+
             var update_position = function(current_time, g) {
                 return;
             };
@@ -136,9 +136,31 @@
                     g.attr("transform", "translate(" + point.x + "," + point.y + ")");
                 };
             }
-            // Define listeners
+            var HIDDEN = 0, SHOWN = 1;
+            var state = HIDDEN;
+            function hide_shape() {
+                if (state !== HIDDEN) {
+                    svg.hide();
+                    state = HIDDEN;
+                }
+            }
+            function show_shape() {
+                if (state != SHOWN) {
+                    svg.show();
+                    state = SHOWN;
+                }
+            }
+            hide_shape();
+
             video.addEventListener('timeupdate', function() {
-                update_position(video.currentTime, g);
+                if (video.currentTime < start || video.currentTime > end) {
+                    hide_shape();
+                } else {
+                    if (state !== SHOWN)
+                        show_shape();
+                    if (trajectory)
+                        update_position(video.currentTime, g);
+                }
             });
         });
     }
