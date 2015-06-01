@@ -74,10 +74,46 @@
             var g = $s("g")
                     .attr("id", video.id + "_overlay_group");
             svg.append(g);
-            var obj = $s("path")
-                    .attr("id", video.id + "_overlay_shape")
-                    .attr("class", "overlay_shape")
-                    .attr("d", shape);
+
+            var _data = /^(circle|rect|ellipse|path):(.+)/.exec(shape);
+            if (! _data) {
+                // If no shape type is specified, consider it is a path
+                _data = [ shape, 'path', shape ];
+            }
+            var obj;
+            var points;
+            switch (_data[1]) {
+            case 'path':
+                obj = $s("path")
+                    .attr("d", _data[2]);
+                break;
+            case 'rect':
+                points = _data[2].split(" ");
+                obj = $s("rect")
+                    .attr("x1", points[0])
+                    .attr("y1", points[1])
+                    .attr("x2", points[2])
+                    .attr("y2", points[3]);
+                break;
+            case 'circle':
+                points = _data[2].split(" ");
+                obj = $s("circle")
+                    .attr("cx", points[0])
+                    .attr("cy", points[1])
+                    .attr("r", points[2]);
+                break;
+            case 'ellipse':
+                points = _data[2].split(" ");
+                obj = $s("ellipse")
+                    .attr("cx", points[0])
+                    .attr("cy", points[1])
+                    .attr("rx", points[2])
+                    .attr("ry", points[3]);
+                break;
+            };
+            // Define common attributes
+            obj.attr("id", video.id + "_overlay_shape")
+                .attr("class", "overlay_shape");
             g.append(obj);
             
             var update_position = function(current_time, g) {

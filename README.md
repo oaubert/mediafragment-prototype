@@ -39,6 +39,24 @@ This could be defined through a CSS pseudo-element such as
 `v1::overlay_shape`, though it actually is an element, so it
 probably does not match the specification.
 
+### Possible extension
+
+If it is deemed desirable to have more common shapes available in SVG
+such as circles and rectangles, the following extension is proposed:
+the shape element can optionnaly start with a shape type specifier
+(one of `path`, `rect`, `circle`, `ellipse`) followed by a colon and
+by a type-specific list of data points.
+
+For path (which is the default if no shape type is specified), a SVG
+path definition.
+
+For rect, 4 numbers `x1`, `y1`, `x2`, `y2`
+
+For circle, 3 numbers `cx` (center y), `cy` (center y) and `r` (radius)
+
+For ellipse, 4 numbers `cx` (center y), `cy` (center y), `rx`
+(horizontal radius) and `ry` (vertical radius)
+
 ## Dynamic syntax
 
 The dynamic syntax also uses SVG paths for its definition, and makes
