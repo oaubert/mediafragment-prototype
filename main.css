@@ -23,6 +23,10 @@ body {
     stroke: blue;
 }
 
+#v2_overlay_shape {
+    stroke-width: 4px;
+}
+
 #v3_overlay_shape {
     fill: brown;
     stroke: black;
