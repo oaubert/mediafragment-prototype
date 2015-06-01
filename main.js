@@ -137,7 +137,7 @@
                 };
             }
             var HIDDEN = 0, SHOWN = 1;
-            var state = HIDDEN;
+            var state = SHOWN;
             function hide_shape() {
                 if (state !== HIDDEN) {
                     svg.hide();
@@ -150,16 +150,20 @@
                     state = SHOWN;
                 }
             }
-            hide_shape();
+            // If a trajectory is defined, its starting point may not
+            // be the initialization point, so start by hiding the
+            // shape
+            if (trajectory)
+                hide_shape();
 
             video.addEventListener('timeupdate', function() {
                 if (video.currentTime < start || video.currentTime > end) {
                     hide_shape();
                 } else {
-                    if (state !== SHOWN)
-                        show_shape();
                     if (trajectory)
                         update_position(video.currentTime, g);
+                    if (state !== SHOWN)
+                        show_shape();                    
                 }
             });
         });
