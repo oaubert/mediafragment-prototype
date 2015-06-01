@@ -40,5 +40,12 @@
 
     <script src="jquery.min.js"></script>
     <script src="main.js"></script>
+    <script type="text/javascript">
+      setTimeout(function () {
+          $("video").each( function () {
+              $('<p>Corresponding URL:<br/>' + $(this).find('source').attr('src') + '</p>').insertAfter($(this).parent());
+          });
+      }, 2000);
+    </script>
   </body>
 </html>
