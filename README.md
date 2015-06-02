@@ -44,7 +44,23 @@ This could be defined through a CSS pseudo-element such as
 `v1::overlay_shape`, though it actually is an element, so it
 probably does not match the specification.
 
-### Possible extensions
+## Dynamic syntax
+
+The dynamic syntax also uses SVG paths for its definition, and makes
+the defined shape follow the given path during the duration of the
+fragment. The current implementation uses the browser internal SVG
+support for parsing and interpolating paths.
+
+For example, the URL ```video.mp4#t=10,50&shape=M0 0l0 50 50 50 50 0z&trajectory=M0 0L200 200```
+will move the aforementioned square in a diagonal line.
+
+In order to facilitate debugging, you can add the ``debug=1``
+developement parameter, which will then display the trajectory in
+addition to the moving shape.
+
+## Possible extensions
+
+### Common shapes
 
 If it is deemed desirable to have more common shapes available in SVG
 such as circles and rectangles, the following extension is proposed
@@ -63,20 +79,9 @@ For circle, 3 numbers `cx` (center y), `cy` (center y) and `r` (radius)
 For ellipse, 4 numbers `cx` (center y), `cy` (center y), `rx`
 (horizontal radius) and `ry` (vertical radius)
 
-## Dynamic syntax
+### External SVG file reference
 
-The dynamic syntax also uses SVG paths for its definition, and makes
-the defined shape follow the given path during the duration of the
-fragment. The current implementation uses the browser internal SVG
-support for parsing and interpolating paths.
-
-For example, the URL ```video.mp4#t=10,50&shape=M0 0l0 50 50 50 50 0z&trajectory=M0 0L200 200```
-will move the aforementioned square in a diagonal line.
-
-In order to facilitate debugging, you can add the ``debug=1``
-developement parameter, which will then display the trajectory in
-addition to the moving shape.
-
+More complex shapes could be defined in external SVG files, which 
 ## Shortcomings/evolutions
 
 This proposal makes some simplifying assumptions, for which an
@@ -122,7 +127,10 @@ HTML5 video, feel free to comment.
 
 ## TODO
 
-Some ideas that could be ironed out :
+Some more ideas that could be ironed out, time permitting :
+
+- provide an editor for both shapes and trajectories, using one of the
+  many existing javascript SVG editors.
 
 - using the shape as a clipping mask. It would involve defining it as a
   &lt;clipPath> element and specifying the clip-path CSS property for
@@ -132,4 +140,3 @@ Some ideas that could be ironed out :
   keypoints. We could extend the trajectory path definition with
   timing information, but we would then lose our ability to use the
   embedded SVG libs for interpreting them.
-  
