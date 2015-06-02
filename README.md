@@ -97,3 +97,25 @@ in a shot, which could vary in scale and orientation.
 3. Due to the flexibility of the SVG path definition, the
 mediafragments will be more complex to interpret and query in
 applications such as the SPARQL-MM project.
+
+## Implementation details
+
+The dynamic path support has been implemented using the SVG API method
+`getPointAtLength`, using a linear interpolation between the temporal
+position and the position on the trajectory path. This provides a
+compact representation, but does not allow to specify specific keypoints.
+
+I have made some tests with standard SVG animation features
+(&lt;animate> and &lt;animateMotion>) but it proved impractical for 2 reasons :
+
+- browser support is variable, even though
+  [CanIUse](http://caniuse.com/#feat=svg-smil) states that there is
+  good support
+
+- video synchronisation should be achieved by SMIL timing events
+  (begin/end), but I did not find any way to make it handle seeks
+  inside the fragment (i.e. setting the position to something other
+  than the begin).
+
+If anyone has experience with combining SVG/SMIL animation events with
+HTML5 video, feel free to comment.
