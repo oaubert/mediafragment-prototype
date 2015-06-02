@@ -52,8 +52,8 @@ such as circles and rectangles, the following extension is proposed
 type specifier (one of `path`, `rect`, `circle`, `ellipse`) followed
 by a colon and by a type-specific list of data points.
 
-For path (which is the default if no shape type is specified), a (SVG
-path)[https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths]
+For path (which is the default if no shape type is specified), a [SVG
+path](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths)
 definition.
 
 For rect, 4 numbers `x`, `y`, `width`, `height`
