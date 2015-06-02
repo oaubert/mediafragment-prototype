@@ -79,9 +79,6 @@ For circle, 3 numbers `cx` (center y), `cy` (center y) and `r` (radius)
 For ellipse, 4 numbers `cx` (center y), `cy` (center y), `rx`
 (horizontal radius) and `ry` (vertical radius)
 
-### External SVG file reference
-
-More complex shapes could be defined in external SVG files, which 
 ## Shortcomings/evolutions
 
 This proposal makes some simplifying assumptions, for which an
@@ -95,13 +92,13 @@ An idea could be to define the notion of MediaFragmentGroup, which
 would group multiplefragments, so that we can address discontinuous
 temporal or spatial ranges.
 
-2. The shape does not change over its trajectory. This will not work
+2. The shape itself does not change over its trajectory. This will not work
 for instance in case of a face tracking algorithm that follows a face
 in a shot, which could vary in scale and orientation.
 
 3. Due to the flexibility of the SVG path definition, the
 mediafragments will be more complex to interpret and query in
-applications such as the SPARQL-MM project.
+applications such as the [SPARQL-MM proposal](http://2014.eswc-conferences.org/sites/default/files/eswc2014pd_submission_65.pdf).
 
 ## Implementation details
 
@@ -132,9 +129,12 @@ Some more ideas that could be ironed out, time permitting :
 - provide an editor for both shapes and trajectories, using one of the
   many existing javascript SVG editors.
 
-- using the shape as a clipping mask. It would involve defining it as a
-  &lt;clipPath> element and specifying the clip-path CSS property for
-  the video.
+- using the shape as a clipping mask. It would involve defining it as
+  a &lt;clipPath> or &lt;mask> element, and specifying the
+  clip-path/mask CSS property for the video.  Silvia Pfeiffer's [HTML5
+  Video
+  guide](http://html5videoguide.net/DefinitiveGuide/chapter5.html) is
+  a good starting point for this.
 
 - find a way to specify timing information. SVG animation uses
   keypoints. We could extend the trajectory path definition with
