@@ -83,10 +83,12 @@ This proposal makes some simplifying assumptions, for which an
 appropriate trade-off has to be found.
 
 1. A mediafragment does not define more than one shape. If multiple
-shapes must be defined, then multiple fragments should be used. An
-idea could be to define the notion of MediaFragmentGroup, which would
-group multiplefragments, so that we can address discontinuous temporal
-or spatial ranges.
+shapes must be defined, then multiple fragments should be used. Or you
+can define multiple shapes in a single SVG path (see [demo page](http://olivieraubert.net/dynamic-media-fragments/#v7)).
+
+An idea could be to define the notion of MediaFragmentGroup, which
+would group multiplefragments, so that we can address discontinuous
+temporal or spatial ranges.
 
 2. The shape does not change over its trajectory. This will not work
 for instance in case of a face tracking algorithm that follows a face

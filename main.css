@@ -16,6 +16,7 @@ body {
 .overlay_shape {
     fill: none;
     stroke: green;
+    stroke-width: 2px;
 }
 
 /* Could be a pseudo-element: #v1::overlay_shape */
@@ -35,4 +36,9 @@ body {
 #v6_overlay_shape {
     fill: grey;
     opacity: .5;
+}
+
+#v2 {
+    /* clip-path: url(#v2_overlay_shape); */
+    clip-path: circle(40px at 100px 100px);
 }
