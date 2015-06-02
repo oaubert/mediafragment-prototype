@@ -119,3 +119,17 @@ I have made some tests with standard SVG animation features
 
 If anyone has experience with combining SVG/SMIL animation events with
 HTML5 video, feel free to comment.
+
+## TODO
+
+Some ideas that could be ironed out :
+
+- using the shape as a clipping mask. It would involve defining it as a
+  &lt;clipPath> element and specifying the clip-path CSS property for
+  the video.
+
+- find a way to specify timing information. SVG animation uses
+  keypoints. We could extend the trajectory path definition with
+  timing information, but we would then lose our ability to use the
+  embedded SVG libs for interpreting them.
+  
