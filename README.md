@@ -87,16 +87,26 @@ appropriate trade-off has to be found.
 1. A mediafragment does not define more than one shape. If multiple
 shapes must be defined, then multiple fragments should be used. Or you
 can define multiple shapes in a single SVG path (see [demo page](http://olivieraubert.net/dynamic-media-fragments/#v7)).
-
-An idea could be to define the notion of MediaFragmentGroup, which
+Another idea could be to define the notion of MediaFragmentGroup, which
 would group multiplefragments, so that we can address discontinuous
 temporal or spatial ranges.
 
-2. The shape itself does not change over its trajectory. This will not work
-for instance in case of a face tracking algorithm that follows a face
-in a shot, which could vary in scale and orientation.
+2. The shape itself does not change over its trajectory. This will not
+work for instance in case of a face tracking algorithm that follows a
+face in a shot, which could vary in scale and orientation. A possible
+way to solve this would be to extend the trajectory path syntax by
+adding a new "Scale" command, which would specify an object scale
+change, e.g. `trajectory=M9,323C147,8 E0.5 C270,78 E1.0 C270,78`
+(using `E` as command abbreviation, since `S` is already used).
 
-3. Due to the flexibility of the SVG path definition, the
+3.Similarly, the temporal specification is not flexible (it is a
+linear interpolation of the trajectory of the fragment duration in the
+current implementation). Temporal keypoints could be specified again
+by extending the path syntax, e.g.  `t=0-10&trajectory=M9,323C147,8 K4
+C270,78 K8 C270,78` (using `K` as `Keypoint` abbreviation) would
+specify durations associated to the current trajectory command.
+
+4. Due to the flexibility of the SVG path definition, the
 mediafragments will be more complex to interpret and query in
 applications such as the [SPARQL-MM proposal](http://2014.eswc-conferences.org/sites/default/files/eswc2014pd_submission_65.pdf).
 
