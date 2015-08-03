@@ -97,14 +97,17 @@ face in a shot, which could vary in scale and orientation. A possible
 way to solve this would be to extend the trajectory path syntax by
 adding a new "Scale" command, which would specify an object scale
 change, e.g. `trajectory=M9,323C147,8 E0.5 C270,78 E1.0 C270,78`
-(using `E` as command abbreviation, since `S` is already used).
+(using `E` as command abbreviation, since `S` is already used). The
+SVG standard defines an additional &lt;animateTransform> element for
+this, but in XML syntax.
 
-3.Similarly, the temporal specification is not flexible (it is a
+3. Similarly, the temporal specification is not flexible (it is a
 linear interpolation of the trajectory of the fragment duration in the
 current implementation). Temporal keypoints could be specified again
 by extending the path syntax, e.g.  `t=0-10&trajectory=M9,323C147,8 K4
-C270,78 K8 C270,78` (using `K` as `Keypoint` abbreviation) would
-specify durations associated to the current trajectory command.
+C270,78 K8 C270,78` (using `K` as `Keypoint` abbreviation, since SVG
+defines the notion of Keypoints but with no associated compact syntax)
+would specify durations associated to the current trajectory command.
 
 4. Due to the flexibility of the SVG path definition, the
 mediafragments will be more complex to interpret and query in
@@ -147,6 +150,6 @@ Some more ideas that could be ironed out, time permitting :
   a good starting point for this.
 
 - find a way to specify timing information. SVG animation uses
-  keypoints. We could extend the trajectory path definition with
-  timing information, but we would then lose our ability to use the
-  embedded SVG libs for interpreting them.
+  keypoints, but in XML syntax. We could extend the trajectory path
+  definition with timing information, but we would then to split the
+  path into multiple segments before interpolating them.
