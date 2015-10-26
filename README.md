@@ -113,6 +113,13 @@ would specify durations associated to the current trajectory command.
 mediafragments will be more complex to interpret and query in
 applications such as the [SPARQL-MM proposal](http://2014.eswc-conferences.org/sites/default/files/eswc2014pd_submission_65.pdf).
 
+5. For complex SVG paths, that are too cumbersome to be put in a
+single URL, a simple syntax extension could allow to reference
+external SVG files, e.g. `shape=src:filename.svg` or
+`shapesrc=filename.svg`. Note that this would make the dereferencing
+more complex and less robust (since the referenced file could be
+unavailable).
+
 ## Implementation details
 
 The dynamic path support has been implemented using the SVG API method
@@ -137,7 +144,7 @@ HTML5 video, feel free to comment.
 
 ## TODO
 
-Some more ideas that could be ironed out, time permitting :
+Some more ideas that could be ironed out, time permitting:
 
 - provide an editor for both shapes and trajectories, using one of the
   many existing javascript SVG editors.
