@@ -7,7 +7,7 @@
     }
 
     (function init() {
-        $('video').each( function () {
+        $('video').each(function () {
             if (this.readyState !== 4) {
                 this.addEventListener('loadedmetadata', function() {
                     return parseVideoSource(this);
@@ -40,7 +40,7 @@
         var id = video.id || 'video_' + (Math.random()).toString().substr(2);
         video.id = id;
 
-        $(video).wrap("<div class='overlay_container'></div>").each( function () {
+        $(video).wrap("<div class='overlay_container'></div>").each(function () {
             var container = $(this).parent().css("position", "relative");
             $(this).css({
                 position: "absolute",
@@ -73,10 +73,22 @@
 
             var g = $s("g")
                     .attr("id", video.id + "_overlay_group");
-            svg.append(g);
+
+            if (parameters.mode == 'mask') {
+                var defs = $s("defs");
+                svg.append(defs);
+                var mask = $s("mask")
+                        .attr("id", video.id + "_overlay_mask")
+                        .attr("maskUnits", "userSpaceOnUse")
+                        .attr("maskContentUnits", "userSpaceOnUse");
+                defs.append(mask);
+                mask.append(g);
+            } else {
+                svg.append(g);
+            }
 
             var _data = /^(circle|rect|ellipse|path):(.+)/.exec(shape);
-            if (! _data) {
+            if (!_data) {
                 // If no shape type is specified, consider it is a path
                 _data = [ shape, 'path', shape ];
             }
@@ -127,12 +139,13 @@
                         .attr('d', trajectory)
                         .attr('fill', 'none')
                         .attr('stroke', 'red')[0];
-                if (debug)
+                if (debug) {
                     svg.append($(object));
+                }
                 var length = object.getTotalLength();
                 update_position =  function (current_time, g) {
                     var percent = (current_time - start) / fragmentDuration;
-                    var point = object.getPointAtLength( length * percent);
+                    var point = object.getPointAtLength(length * percent);
                     g.attr("transform", "translate(" + point.x + "," + point.y + ")");
                 };
             }
@@ -153,17 +166,19 @@
             // If a trajectory is defined, its starting point may not
             // be the initialization point, so start by hiding the
             // shape
-            if (trajectory)
+            if (trajectory) {
                 hide_shape();
-
+            }
             video.addEventListener('timeupdate', function() {
                 if (video.currentTime < start || video.currentTime > end) {
                     hide_shape();
                 } else {
-                    if (trajectory)
+                    if (trajectory) {
                         update_position(video.currentTime, g);
-                    if (state !== SHOWN)
-                        show_shape();                    
+                    }
+                    if (state !== SHOWN) {
+                        show_shape();
+                    }
                 }
             });
         });
