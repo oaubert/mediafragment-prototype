@@ -33,8 +33,8 @@
         var debug = parameters.debug;
         var fragmentDuration = end - start;
 
-        var shape = parameters.shape; // SVG path
-        var trajectory = parameters.trajectory; // Subset of SVG path
+        var shape = decodeURIComponent(parameters.shape || ""); // SVG path
+        var trajectory = decodeURIComponent(parameters.trajectory || ""); // Subset of SVG path
 
         // Ensure that video element has an id
         var id = video.id || 'video_' + (Math.random()).toString().substr(2);
